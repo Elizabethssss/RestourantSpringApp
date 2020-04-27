@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CDN CSS file-->
+    <link rel="stylesheet" href="libs/bootstrap-4.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="libs/fontawesome-free-5.12.1-web/css/all.css"/>
+    <!--    <link rel="stylesheet" href="styles/basket.css" />-->
+    <link rel="stylesheet" href="styles/commons/header.css" />
+    <link rel="stylesheet" href="styles/commons/footer.css" />
+    <title>Basket</title>
+</head>
+<body>
+<header th:with="navItem=''" th:insert="commons/commons :: header"></header>
+<h2>Something went wrong! </h2>
+<h3>Our Engineers are working on it</h3>
+<a href="/index">Go Home</a>
+<footer th:insert="commons/commons :: footer"></footer>
+
+<script src="libs/jquery/jquery-3.4.1.min.js"></script>
+<script src="libs/popper/popper.min.js"></script>
+<script src="libs/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+<script src="libs/scrollreveal/scrollreveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CDN CSS file-->
+    <link rel="stylesheet" href="libs/bootstrap-4.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="libs/fontawesome-free-5.12.1-web/css/all.css"/>
+    <link rel="stylesheet" href="styles/myOrders.css" />
+    <link rel="stylesheet" href="styles/commons/header.css" />
+    <link rel="stylesheet" href="styles/commons/footer.css" />
+
+    <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet">
+    <title>My Orders</title>
+</head>
+<body>
+<header th:with="navItem='myOrders'" th:insert="commons/commons :: header"></header>
+
+<main>
+    <div class="section-1">
+        <div class="container">
+            <div class="h1_logout d-flex justify-content-between">
+                <h1 class="orders-title"><span>My Orders:</span></h1>
+            </div>
+
+            <div class="text-center no-orders" th:if="${orders.isEmpty()}">
+                You haven't got any orders yet!
+            </div>
+            <div th:each="order : ${orders}">
+                <div class="row">
+                    <div class="col col-12 mb-5">
+                        <div class="order-item">
+                            <div class="info">
+                                <div class="right-block">
+                                    <div class="status"><span th:class="'badge ' + ${order.status.badge}"
+                                                              th:text="${order.status.statusDesc}"></span></div>
+<!--todo: credit card-->
+                                    <a th:if="${order.status.name() == 'CONFIRMED'}" class="btn bg-warning pay-btn " th:href="'creditCard?orderId=' + ${order.id}">Pay</a>
+                                    <div class="price"><span th:text="${order.cost}"></span> UAH</div>
+                                </div>
+                                <div>
+                                    <a data-toggle="collapse" th:href="'#collapseDishes-' + ${order.id}" aria-expanded="false">
+                                        <span class="order-dish-items badge badge-info" th:text="${order.dishes.size() + order.lunches.size()}">
+                                        </span><em class="double-arrow fas fa-angle-double-right"></em>
+                                    </a>
+                                </div>
+                                <div># <span th:text="${order.id}"></span></div>
+                                <div class="created-at" th:text="${order.createdAt}"></div>
+                            </div>
+                            <div class="info-list collapse" th:id="'collapseDishes-' + ${order.id}">
+                                <div class="info-list-item" th:each="dishMap : ${order.getDishIntegerMap()}">
+                                    <a class="dish-name" th:href="'dish?dishId=' + ${dishMap.key.id}">
+                                        <img src="" alt="" th:src="'img/dishes-s/' + ${dishMap.key.img}" th:alt="${dishMap.key.name}" />
+                                        <span th:text="${dishMap.key.name}"></span>
+                                    </a>
+                                    <div class="divider"></div>
+                                    <div class="info-list__item-price">
+                                        <span class="info-list__item-price__items" th:text="${dishMap.value}"></span> x
+                                        <span class="info-list__item-price__cost" th:text="${dishMap.key.price} + ' UAH'"></span> =
+                                        <span class="info-list__item-price__cost" th:text="${dishMap.key.price * dishMap.value}"></span>
+                                    </div>
+                                </div>
+                                <div class="info-list-item" th:each="lunchMap : ${order.getLunchIntegerMap()}">
+                                    <a class="dish-name" th:href="'lunch?lunchId=' + ${lunchMap.key.id}">
+                                        <img src="" alt="" th:src="'img/lunches-s/' + ${lunchMap.key.img}" th:alt="${lunchMap.key.name}" />
+                                        <span th:text="${lunchMap.key.name}"></span>
+                                    </a>
+                                    <div class="divider"></div>
+                                    <div class="info-list__item-price">
+                                        <span class="info-list__item-price__items" th:text="${lunchMap.value}"></span> x
+                                        <span class="info-list__item-price__cost" th:text="${lunchMap.key.price} + ' UAH'"></span> =
+                                        <span class="info-list__item-price__cost" th:text="${lunchMap.key.price * lunchMap.value}"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${!orders.isEmpty()}" class="container my-pagination">
+                <a th:href="'myOrders?page=' + ${page - 1}"
+                   th:class="'page-btn btn site-btn1 px-4 py-3 mr-4 ml-4 btn-outline-warning ' + ${page <= 1 ? 'disabled btn-dis' : ''}">
+                    Previous
+                </a>
+                <p th:text="${page} + ' / ' + ${totalPages}"></p>
+                <a th:href="'myOrders?page=' + ${page + 1}"
+                   th:class="'page-btn btn site-btn1 px-4 py-3 mr-4 ml-4 btn-outline-warning ' + ${page >= totalPages ? 'disabled btn-dis' : ''}">
+                    Next
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:insert="commons/commons :: footer"></footer>
+
+<!-- Bootstrap CDN CSS file -->
+<script src="libs/jquery/jquery-3.4.1.min.js"></script>
+<script src="libs/popper/popper.min.js"></script>
+<script src="libs/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+<script src="libs/scrollreveal/scrollreveal.js"></script>
+</body>
+</html>

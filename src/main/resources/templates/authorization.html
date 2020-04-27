@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/authorization.css" />
+    <title>Authorization</title>
+</head>
+<body>
+<div th:class="'container ' + ${rightSide ? 'right-panel-active' : ''}" id="container">
+    <div class="form-container sign-up-container">
+        <form method="post" th:action="signUp" th:object="${user}">
+            <h1>Create Account</h1>
+            <input name="username" type="text" th:class="${#fields.hasErrors('username') ? 'error' : ''}"
+                   placeholder="Username" th:field="*{username}"/>
+            <p class="errorMsg" th:if="${#fields.hasErrors('username')}"
+               th:errors="*{username}">Username Error</p>
+            <input name="email" type="email" th:class="${#fields.hasErrors('email') ? 'error' : ''}"
+                   placeholder="Email" th:field="*{email}"/>
+            <p class="errorMsg" th:if="${#fields.hasErrors('email')}"
+               th:errors="*{email}">Email Error</p>
+            <input name="password" type="password" placeholder="Password"
+                   th:class="${#fields.hasErrors('password') || #fields.hasErrors('rePassword') ? 'error' : ''}"/>
+            <input name="rePassword" type="password" placeholder="Repeat Password" id="pass2"
+                   th:class="${#fields.hasErrors('password') || #fields.hasErrors('rePassword') ? 'error' : ''}"/>
+
+            <p class="errorMsg" th:if="${#fields.hasErrors('rePassword')}"
+               th:errors="*{rePassword}" >Repeat Password Error</p>
+            <p class="errorMsg" th:unless="${#fields.hasErrors('password')}"
+               th:errors="*{password}" >Password Error</p>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+
+        <form method="post" th:action="@{/login}" th:object="${user}">
+            <h1>Login</h1>
+            <input name="email" type="email" th:class="${loginError != null ? 'error' : ''}"
+                   placeholder="Email"
+                    value="admin@admin.com"/>
+<!--                    value="dassshka@kiev.ua"-->
+            <input name="password" type="password" th:class="${loginError != null ? 'error' : ''}"
+                   placeholder="Password"
+                    value="admin"/>
+<!--                    value="dasha"-->
+
+            <p th:if="${loginError}" class="errorMsg" th:text="${loginError}"></p>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost btn" id="loginSlideBtn">Login</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost btn" id="signUpSlideBtn">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Created with <img src="img/heart.png" alt="Heart" /> by Elizabeth.</p>
+</footer>
+
+<script src="js/authorization.js"></script>
+</body>
+</html>

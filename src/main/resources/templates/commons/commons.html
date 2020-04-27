@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a href="index" class="navbar-brand ml-3">Elizabeth</a>
+        <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse"></div>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="index" th:class="'nav-link ' + ${navItem.equals('home') ? 'active' : ''}">Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="menu?type=MAIN_DISH&page=1" th:class="'nav-link ' + ${navItem.equals('menu') ? 'active' : ''}">Menu</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="myOrders?page=1" th:class="'nav-link ' + ${navItem.equals('myOrders') ? 'active' : ''}">My Orders</a>
+                </li>
+                <li th:if="${session.get('user').role.name() == 'ADMIN'}" class="nav-item ">
+                    <a href="adminPage?page=1" th:class="'nav-link ' + ${navItem.equals('adminPage') ? 'active' : ''}">Admin Page</a>
+                </li>
+
+            </ul>
+            <!--            <div class="dropdown mr-3">-->
+            <!--                <button class="btn btn-outline-warning dropdown-toggle btn-drop" type="button"-->
+            <!--                        id="dropdownMenuButton" data-toggle="dropdown">EN/RU</button>-->
+            <!--                <div class="dropdown-menu">-->
+            <!--                    <a class="dropdown-item"-->
+            <!--                       href="/index">-->
+            <!--                        ENGLISH-->
+            <!--                    </a>-->
+            <!--                    <a class="dropdown-item"-->
+            <!--                       href="/index?lang=ru">-->
+            <!--                        RUSSIAN-->
+            <!--                    </a>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <form class="form-inline my-2 mr-3 my-lg-0">
+                <a href="basket" class="d-flex btn menu-right-btn btn-warning">Basket:
+                    <!--                <a href="basket" class="d-flex btn menu-right-btn btn-warning">Basket:-->
+                    <span id="totalDishes" class="ml-2" th:text="${session.get('inBasket')}"></span>
+                </a>
+            </form>
+            <a th:href="@{/logout}"><em class="fas fa-sign-out-alt"></em></a>
+        </div>
+    </nav>
+</header>
+
+<footer th:fragment="footer" class="footer bg-dark p-4 mt-3 navbar-fixed-bottom d-flex justify-content-center align-items-center">
+    <div class="section-5 text-center d-flex">
+        <h4>Created with <em class="fas fa-heart"></em>
+            by Elizabeth.</h4>
+    </div>
+</footer>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CDN CSS file-->
+    <link rel="stylesheet" href="libs/bootstrap-4.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="styles/dish.css" />
+    <link rel="stylesheet" href="styles/commons/header.css" />
+    <link rel="stylesheet" href="styles/commons/footer.css" />
+    <link rel="stylesheet" href="libs/fontawesome-free-5.12.1-web/css/all.css"/>
+    <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.theme.default.min.css">
+
+    <title>Dish</title>
+</head>
+<body>
+<header th:with="navItem='menu'" th:insert="commons/commons :: header"></header>
+
+<main>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="menu?type=MAIN_DISH&page=1">Menu</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page" th:text="${dish.name}"></li>
+        </ol>
+    </nav>
+    <div class="alert alert-success text-center hide" role="alert">
+
+    </div>
+    <form method="post" th:action="'/dish?dishId=' + ${dish.id}">
+        <div class="section-4 bg-dark">
+            <div class="container p-0">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="" alt="" th:src="'img/dishes/' + ${dish.img}" th:alt="${dish.name}" width="530"/>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="text-white" th:text="${dish.name}"></h1>
+                        <p class="para-1" th:text="${dish.about}"></p>
+                        <p class="weight" th:text="'Weight: ' + ${dish.weight} + ' g'"></p>
+                        <p class="price" th:text="'Price: ' + ${dish.priceInt} + ' UAH'"></p>
+                        <button type="submit" class="btn px-4 py-1 btn-outline-warning">
+                            Buy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="container carous">
+        <h1><span>Ingredients:</span></h1>
+        <div class="owl-carousel owl-theme">
+            <div class="item ingredient-item" th:each="ingredient : ${dish.ingredients}">
+                <div>
+                    <img src="" alt="" th:src="'img/ingredients/' + ${ingredient.img}" th:alt="${ingredient.name}">
+                </div>
+                <h4 th:text="${ingredient.name}"></h4>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:insert="commons/commons :: footer"></footer>
+
+<script src="libs/jquery/jquery-3.4.1.min.js"></script>
+<script src="libs/popper/popper.min.js"></script>
+<script src="libs/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+<script src="libs/scrollreveal/scrollreveal.js"></script>
+<script src="libs/owlcarousel/dist/owl.carousel.min.js"></script>
+<script>
+    window.sr = ScrollReveal({ duration: 1500 });
+    sr.reveal(".section-4 .row");
+    sr.reveal(".row .para-1");
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:3,
+                nav:false
+            },
+            1000:{
+                items:6,
+                nav:true,
+                loop:false
+            }
+        }
+    })
+</script>
+</body>
+</html>

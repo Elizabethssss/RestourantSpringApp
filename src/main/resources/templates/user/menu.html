@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="libs/bootstrap-4.4.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="styles/menu.css" />
+    <link rel="stylesheet" href="styles/commons/header.css" />
+    <link rel="stylesheet" href="styles/commons/footer.css" />
+    <link rel="stylesheet" href="libs/fontawesome-free-5.12.1-web/css/all.css"/>
+    <title>Menu</title>
+</head>
+<body>
+<header th:with="navItem='menu'" th:insert="commons/commons :: header"></header>
+
+<main>
+    <div class="container-fluid p-0">
+        <div th:class="'site-content ' + ${type}">
+            <div class="d-flex justify-content-center shadow">
+                <div class="d-flex flex-column">
+                    <h1 class="site-title">The Elizabeth's Menu</h1>
+                    <p class="site-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, beatae.</p>
+                    <div class="menu-list d-flex flex-row flex-wrap justify-content-center">
+                        <a href="menu?type=SALAD&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('SALAD') ? 'active' : ''}">
+                            SALADS
+                        </a>
+                        <a href="menu?type=SNACK&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('SNACK') ? 'active' : ''}">
+                            SNACKS
+                        </a>
+                        <a href="menu?type=SOUP&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('SOUP') ? 'active' : ''}">
+                            SOUPS
+                        </a>
+                        <a href="menu?type=MAIN_DISH&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('MAIN_DISH') ? 'active' : ''}">
+                            MAIN DISHES
+                        </a>
+                        <a href="menu?type=DESSERT&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('DESSERT') ? 'active' : ''}">
+                            DESSERTS
+                        </a>
+                        <a href="menu?type=DRINK&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('DRINK') ? 'active' : ''}">
+                            DRINKS
+                        </a>
+                        <a href="menu?type=BREAKFAST&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('BREAKFAST') ? 'active' : ''}">
+                            BREAKFASTS
+                        </a>
+                        <a href="menu?type=LUNCH&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('LUNCH') ? 'active' : ''}">
+                            LUNCHES
+                        </a>
+                        <a href="menu?type=HOLIDAY&page=1" th:class="'btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' +
+                         ${type.equals('HOLIDAY') ? 'active' : ''}">
+                            HOLIDAY SETS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-1">
+
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-xl-3">
+
+                <div class="col my-col" th:each="dish : ${dishes}">
+                    <a th:href="'dish?dishId=' + ${dish.id}">
+                        <div class="single-content">
+                            <img src="" alt="" th:src="'img/dishes-s/' + ${dish.img}" th:alt="${dish.name}" />
+                            <div class="text-content">
+                                <h4 th:text="${dish.name}"></h4>
+                                <p th:text="'Weight: ' + ${dish.weight} + ' g'"></p>
+                                <h5 th:text="'Price: ' + ${dish.priceInt} + ' UAH'"></h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col my-col" th:each="lunch : ${lunches}">
+                    <a th:href="'lunch?lunchId=' + ${lunch.id}">
+                        <div class="single-content">
+                            <img src="" alt="" th:src="'img/lunches-s/' + ${lunch.img}" th:alt="${lunch.name}" />
+                            <div class="text-content">
+                                <h4 th:text="${lunch.name}"></h4>
+                                <p th:text="'Weight: ' + ${lunch.weight} + ' g'"></p>
+                                <h5 th:text="'Price: ' + ${lunch.price} + ' UAH'"></h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container my-pagination">
+        <a th:href="'menu?type=' + ${type} + '&page=' + ${page - 1}"
+           th:class="'page-btn btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' + ${page <= 1 ? 'disabled btn-dis' : ''}">
+            Previous
+        </a>
+        <p th:text="${page} + ' / ' + ${totalPages}"></p>
+        <a th:href="'menu?type=' + ${type} + '&page=' + ${page + 1}"
+           th:class="'page-btn btn site-btn1 px-4 py-3 mr-4 btn-outline-warning ' + ${page >= totalPages ? 'disabled btn-dis' : ''}">
+            Next
+        </a>
+
+    </div>
+</main>
+<footer th:insert="commons/commons :: footer"></footer>
+
+<script src="libs/jquery/jquery-3.4.1.min.js"></script>
+<script src="libs/popper/popper.min.js"></script>
+<script src="libs/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+<script src="libs/scrollreveal/scrollreveal.js"></script>
+<script>
+    window.sr = ScrollReveal({ duration: 1500 });
+    sr.reveal(".site-content .d-flex");
+    sr.reveal(".row .single-content");
+</script>
+</body>
+</html>

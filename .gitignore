@@ -1,0 +1,13 @@
+HELP.md
+target/
+.mvn/wrapper/**
+!**/src/main/**
+!**/src/test/**
+
+
+.idea
+*.iml
+mvnw
+mvnw.cmd
+src/main/resources/application.properties
+src/main/resources/static/libs/**
