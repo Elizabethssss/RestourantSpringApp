@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: restaurant
+-- Host: localhost    Database: restaurant_spring
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `dishes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dishes` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `about` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `dish_type` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `about` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `dish_type` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `price` double NOT NULL,
   `weight` int(11) NOT NULL,
-  `img` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `img` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -60,7 +60,7 @@ CREATE TABLE `dishes_ingredients` (
   KEY `ingredient_id_idx` (`ingredient_id`),
   CONSTRAINT `dish_id` FOREIGN KEY (`dish_id`) REFERENCES `dishes` (`id`),
   CONSTRAINT `ingredient_id` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `dishes_ingredients` (
 
 LOCK TABLES `dishes_ingredients` WRITE;
 /*!40000 ALTER TABLE `dishes_ingredients` DISABLE KEYS */;
-INSERT INTO `dishes_ingredients` VALUES (1,2,1),(2,2,2),(3,2,3),(4,2,4),(5,2,5),(6,2,6),(7,2,7),(11,1,8),(12,1,9),(13,1,10),(14,1,11),(15,1,12),(16,1,13),(17,12,14),(18,12,15),(19,12,16),(20,12,17),(21,12,18),(22,12,19),(23,12,2),(24,12,20),(25,13,1),(26,13,21),(27,13,22),(28,13,23),(29,13,24),(30,13,18),(31,13,20),(32,14,25),(33,14,26),(34,14,27),(35,14,28),(36,14,29),(37,14,30),(38,14,31),(39,14,21),(40,15,10),(41,15,20),(42,15,30),(43,15,34),(44,15,37),(45,16,35),(46,16,32),(47,16,33),(48,16,36),(49,16,38),(50,17,35),(51,17,39),(52,17,40),(53,18,41),(54,18,35),(55,18,36),(56,18,30),(57,19,44),(58,19,42),(59,19,35),(60,19,30),(61,19,26),(62,19,38),(63,20,43),(64,20,35),(65,19,45),(66,2,3),(67,21,47),(68,21,48),(69,21,32),(70,3,49),(71,3,50),(72,3,51),(73,3,52),(74,3,53),(75,3,54),(76,3,55),(77,3,10),(78,3,42),(79,22,56),(80,22,57),(81,22,30),(92,23,58),(93,23,53),(94,23,26),(95,23,18),(96,23,49),(97,23,21),(98,23,2),(99,23,27),(100,23,30),(101,23,41),(102,4,61),(103,4,1),(104,4,59),(105,4,18),(106,4,22),(107,4,24),(108,4,60),(109,4,45),(110,4,13),(111,5,62),(112,5,63),(113,6,64),(114,6,65),(115,6,62),(116,6,26),(117,6,41),(118,6,42),(119,6,60),(120,6,19),(121,7,66),(122,7,67),(123,7,56),(124,7,41),(125,7,27),(126,7,44),(127,7,59),(128,24,69),(129,24,30),(130,24,44),(131,24,56),(132,24,26),(133,24,42),(134,24,41),(135,24,36);
+INSERT INTO `dishes_ingredients` VALUES (1,2,1),(2,2,2),(3,2,3),(4,2,4),(5,2,5),(6,2,6),(7,2,7),(11,1,8),(12,1,9),(13,1,10),(14,1,11),(15,1,12),(16,1,13),(17,12,14),(18,12,15),(19,12,16),(20,12,17),(21,12,18),(22,12,19),(23,12,2),(24,12,20),(25,13,1),(26,13,21),(27,13,22),(28,13,23),(29,13,24),(30,13,18),(31,13,20),(32,14,25),(33,14,26),(34,14,27),(35,14,28),(36,14,29),(37,14,30),(38,14,31),(39,14,21),(40,15,10),(41,15,20),(42,15,30),(43,15,34),(44,15,37),(50,17,35),(51,17,39),(52,17,40),(53,18,41),(54,18,35),(55,18,36),(56,18,30),(57,19,44),(58,19,42),(59,19,35),(60,19,30),(61,19,26),(62,19,38),(65,19,45),(66,2,3),(67,21,47),(68,21,48),(69,21,32),(70,3,49),(71,3,50),(72,3,51),(73,3,52),(74,3,53),(75,3,54),(76,3,55),(77,3,10),(78,3,42),(79,22,56),(80,22,57),(81,22,30),(92,23,58),(93,23,53),(94,23,26),(95,23,18),(96,23,49),(97,23,21),(98,23,2),(99,23,27),(100,23,30),(101,23,41),(102,4,61),(103,4,1),(104,4,59),(105,4,18),(106,4,22),(107,4,24),(108,4,60),(109,4,45),(110,4,13),(113,6,64),(114,6,65),(115,6,62),(116,6,26),(117,6,41),(118,6,42),(119,6,60),(120,6,19),(121,7,66),(122,7,67),(123,7,56),(124,7,41),(125,7,27),(126,7,44),(127,7,59),(128,24,69),(129,24,30),(130,24,44),(131,24,56),(132,24,26),(133,24,42),(134,24,41),(135,24,36),(136,16,35),(137,16,32),(138,16,33),(139,16,36),(140,16,38),(141,20,43),(142,20,35),(151,5,62),(152,5,63);
 /*!40000 ALTER TABLE `dishes_ingredients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,8 +111,8 @@ DROP TABLE IF EXISTS `ingredients`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ingredients` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `img` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `img` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -136,10 +136,10 @@ DROP TABLE IF EXISTS `lunches`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lunches` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `description` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `img` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `lunch_type` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `img` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `lunch_type` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -163,14 +163,14 @@ DROP TABLE IF EXISTS `orders`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `status` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cost` int(11) NOT NULL,
   `created_at` date NOT NULL,
   `user_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +179,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (8,'PAYED',1020,'2020-03-27',2),(10,'PAYED',675,'2020-03-27',2),(11,'PAYED',900,'2020-03-27',2),(12,'PAYED',870,'2020-03-27',2),(13,'PAYED',265,'2020-03-30',9),(14,'FORMED',0,'2020-03-30',6),(18,'PAYED',425,'2020-03-30',2),(19,'CONFIRMED',595,'2020-03-30',1),(20,'FORMED',0,'2020-03-30',1),(21,'CONFIRMED',1110,'2020-03-30',9),(22,'PAYED',1297,'2020-03-30',2),(23,'CONFIRMED',195,'2020-03-30',9),(24,'CONFIRMED',505,'2020-03-30',9),(25,'CONFIRMED',579,'2020-03-30',9),(26,'CONFIRMED',195,'2020-04-01',2),(27,'CONFIRMED',375,'2020-04-01',2),(28,'CONFIRMED',7283,'2020-04-01',9),(29,'FORMED',0,'2020-04-02',9),(30,'CONFIRMED',530,'2020-04-03',2),(31,'CONFIRMED',825,'2020-04-03',2),(32,'FORMED',0,'2020-04-10',2);
+INSERT INTO `orders` VALUES (1,'CONFIRMED',8505,'2020-04-17',1),(2,'FORMED',0,'2020-04-17',3),(3,'PAYED',1200,'2020-04-18',2),(4,'FORMED',0,'2020-04-21',1),(5,'FORMED',0,'2020-04-23',2);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `orders_dishes` (
   KEY `dish_id` (`dish_id`),
   CONSTRAINT `disho_id` FOREIGN KEY (`dish_id`) REFERENCES `dishes` (`id`),
   CONSTRAINT `orderd_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=297 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2382 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `orders_dishes` (
 
 LOCK TABLES `orders_dishes` WRITE;
 /*!40000 ALTER TABLE `orders_dishes` DISABLE KEYS */;
-INSERT INTO `orders_dishes` VALUES (111,8,1),(112,8,1),(113,8,15),(114,8,17),(115,8,12),(181,10,13),(182,10,13),(183,10,13),(184,11,16),(185,11,16),(186,11,16),(187,11,16),(188,11,16),(189,11,16),(195,12,2),(196,12,12),(197,12,12),(198,19,18),(199,19,18),(200,19,14),(201,13,1),(202,18,18),(203,18,13),(204,21,2),(205,21,2),(206,21,2),(207,23,14),(208,24,1),(209,24,17),(210,24,17),(219,22,12),(221,22,16),(222,22,16),(229,26,14),(232,25,19),(233,25,14),(234,25,14),(235,28,4),(236,28,4),(237,28,3),(238,28,3),(239,28,22),(240,28,16),(241,28,21),(242,28,19),(243,28,23),(244,28,22),(245,28,22),(246,28,22),(247,28,22),(248,28,21),(249,28,21),(250,28,21),(251,28,21),(252,28,21),(253,28,21),(254,28,21),(255,28,21),(256,28,21),(257,28,23),(258,28,23),(259,28,23),(260,28,23),(261,28,19),(262,28,19),(263,28,19),(264,28,19),(265,28,19),(266,28,16),(267,28,3),(268,28,3),(269,28,4),(270,28,4),(271,28,4),(272,28,4),(273,28,3),(274,28,3),(275,28,3),(276,28,19),(277,28,23),(278,27,23),(285,27,21),(286,27,21),(287,27,21),(290,30,3),(291,30,13),(293,31,13),(294,31,16),(295,31,13),(296,31,13);
+INSERT INTO `orders_dishes` VALUES (2332,1,5),(2333,1,5),(2334,1,5),(2335,1,5),(2336,1,5),(2337,1,5),(2338,1,5),(2339,1,5),(2340,1,5),(2341,1,21),(2342,1,21),(2343,1,21),(2344,1,21),(2345,1,21),(2367,3,21),(2368,3,12),(2369,3,12),(2370,3,16);
 /*!40000 ALTER TABLE `orders_dishes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,7 +228,7 @@ CREATE TABLE `orders_lunches` (
   KEY `lunch_id_idx` (`lunch_id`),
   CONSTRAINT `l_id` FOREIGN KEY (`lunch_id`) REFERENCES `lunches` (`id`),
   CONSTRAINT `order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,7 +237,7 @@ CREATE TABLE `orders_lunches` (
 
 LOCK TABLES `orders_lunches` WRITE;
 /*!40000 ALTER TABLE `orders_lunches` DISABLE KEYS */;
-INSERT INTO `orders_lunches` VALUES (9,22,1),(10,22,1),(11,22,1),(12,32,1);
+INSERT INTO `orders_lunches` VALUES (120,1,4),(121,1,4),(125,3,3);
 /*!40000 ALTER TABLE `orders_lunches` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,11 +252,11 @@ CREATE TABLE `users` (
   `id` bigint(19) NOT NULL AUTO_INCREMENT,
   `username` longtext NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` longtext NOT NULL,
   `role` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +265,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Elizabethssss','teddy020301@gmail.com','202cb962ac59075b964b07152d234b70','USER'),(2,'Dasha','dassshka@kiev.ua','4bea249142664d11a289ffdf30225a91','USER'),(6,'ÐÐ°Ð»ÐµÑÐ°','re@re','12eccbdd9b32918131341f38907cbbb5','USER'),(9,'Admin','admin@admin.com','21232f297a57a5a743894a0e4a801fc3','ADMIN');
+INSERT INTO `users` VALUES (1,'Dasha','dassshka@kiev.ua','$2a$10$GT5NZQZZ5eb/1CJozDu2V.uxx.qRiX44tWkZ6QPj/MCjn9CYTxWiS','USER'),(2,'Admin','admin@admin.com','$2a$10$ufHyIVXxtnClawDKabRLauMXKACg5P1cpR.iG.ceRuQSNr9wXLOBe','ADMIN'),(3,'Lizon','teddy020301@gmail.com','$2a$10$0Xme9iR0bVGF9snAe4RwweAaHYK6SrB9eimtuEEjE..3iTbrg5SNq','USER');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -278,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-12 18:09:01
+-- Dump completed on 2020-05-09 13:24:38

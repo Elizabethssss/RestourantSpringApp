@@ -36,7 +36,6 @@ public class ControllerUtilTest {
         });
     }
 
-
     @Test
     public void parsePageNumberTest() {
         assertEquals(expected, parsePageNumber(parameter, totalPages, url));

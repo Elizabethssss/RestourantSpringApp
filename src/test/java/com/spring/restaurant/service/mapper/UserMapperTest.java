@@ -61,7 +61,6 @@ public class UserMapperTest {
         assertNull(userEntity);
     }
 
-
     private static User getUser() {
         final User user = new User();
         user.setId(1L);
@@ -81,5 +80,4 @@ public class UserMapperTest {
         userEntity.setRoleEntity(RoleEntity.USER);
         return userEntity;
     }
-
 }
