@@ -52,6 +52,8 @@ const updateBasketItem = (action, target, res) => {
                 clearTimeout(timeout);
                 timeout = null;
             }, 500);
+            document.querySelector('.total-price').classList.add('hide');
+            // document.querySelector('#no-dishes').classList.remove('hide');
         }
     } else {
         target.querySelectorAll('.number-of-item').forEach(item => {

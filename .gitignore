@@ -9,5 +9,4 @@ target/
 *.iml
 mvnw
 mvnw.cmd
-src/main/resources/application.properties
 src/main/resources/static/libs/**

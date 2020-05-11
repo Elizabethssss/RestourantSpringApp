@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="row" th:if="${!dishIntegerMap.isEmpty() || !lunchIntegerMap.isEmpty()}">
-                <div class="col-10 total-price mt-4 text-right">
+                <div class="total-price col-10 mt-4 text-right">
                     <h2 class="total">Total: <span id="totalPrice" th:text="${totalPrice}"></span>
                         UAH</h2>
                     <a href="placeOrder" class="btn btn-dark mb-4">Place an order</a>

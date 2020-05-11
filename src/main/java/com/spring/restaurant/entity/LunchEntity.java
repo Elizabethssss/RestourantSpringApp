@@ -17,6 +17,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.List;
 
+/**
+ * Entity class of Lunch
+ */
+
 @Entity
 @Getter
 @Setter

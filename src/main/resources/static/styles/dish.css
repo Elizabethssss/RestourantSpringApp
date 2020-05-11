@@ -142,3 +142,13 @@ body {
     color: #666;
     border-color: #666;
 }
+
+.dish-img {
+    max-width: 100%;
+    padding: 10px;
+}
+.dish-description h1,
+.dish-description p,
+.dish-description button {
+    margin: 20px;
+}

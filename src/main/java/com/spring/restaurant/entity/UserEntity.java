@@ -15,6 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
+/**
+ * Entity class of User
+ */
+
 @Entity
 @Getter
 @Setter

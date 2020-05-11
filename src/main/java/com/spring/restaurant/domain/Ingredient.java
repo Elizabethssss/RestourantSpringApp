@@ -6,6 +6,11 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Domain class of Ingredient
+ */
+
+
 @Getter
 @Setter
 @NoArgsConstructor

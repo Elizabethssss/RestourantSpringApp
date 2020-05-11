@@ -9,6 +9,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Domain class of Order
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,7 +24,12 @@ public class Order {
     private User user;
     private List<Dish> dishes;
     private List<Lunch> lunches;
-    //todo:creditCard???
+
+    /**
+     * Use to get Dish - Integer Map from Dish List (dishes)
+     *
+     * @return Dish - Integer Map of Dish List
+     */
 
     public Map<Dish, Integer> getDishIntegerMap() {
         Map<Dish, Integer> dishIntegerMap = new LinkedHashMap<>();
@@ -39,6 +48,12 @@ public class Order {
         }
         return dishIntegerMap;
     }
+
+    /**
+     * Use to get Lunch - Integer Map from Lunch List (lunches)
+     *
+     * @return Lunch - Integer Map of Lunch List
+     */
 
     public Map<Lunch, Integer> getLunchIntegerMap() {
         Map<Lunch, Integer> lunchIntegerMap = new LinkedHashMap<>();

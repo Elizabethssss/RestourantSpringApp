@@ -34,9 +34,9 @@
             <div class="container p-0">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="" alt="" th:src="'img/dishes/' + ${dish.img}" th:alt="${dish.name}" width="530"/>
+                        <img class="dish-img" src="" alt="" th:src="'img/dishes/' + ${dish.img}" th:alt="${dish.name}" width="530"/>
                     </div>
-                    <div class="col-md-6">
+                    <div class="dish-description col-md-6">
                         <h1 class="text-white" th:text="${dish.name}"></h1>
                         <p class="para-1" th:text="${dish.about}"></p>
                         <p class="weight" th:text="'Weight: ' + ${dish.weight} + ' g'"></p>
@@ -79,6 +79,10 @@
         responsive:{
             0:{
                 items:1,
+                nav:true
+            },
+            360:{
+                items:2,
                 nav:true
             },
             600:{

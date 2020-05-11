@@ -2,6 +2,10 @@ package com.spring.restaurant.domain;
 
 import java.time.LocalTime;
 
+/**
+ * Enum of Lunch Types
+ */
+
 public enum LunchType {
     BREAKFAST(LocalTime.of(7,0), LocalTime.of(10, 0)),
     LUNCH(LocalTime.of(13,0), LocalTime.of(15, 0)),

@@ -19,6 +19,10 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Entity class of Order
+ */
+
 @Entity
 @Getter
 @Setter
@@ -45,7 +49,6 @@ public class OrderEntity {
     private UserEntity userEntity;
 
     @ManyToMany
-//            (cascade = CascadeType.PERSIST)
     @JoinTable(name = "orders_dishes",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "dish_id")

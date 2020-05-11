@@ -1,5 +1,9 @@
 package com.spring.restaurant.domain;
 
+/**
+ *  Enum of Order Statuses
+ */
+
 public enum OrderStatus {
     FORMED("Making an order", ""),
     SENT("Waiting for confirmation", "badge-info"),

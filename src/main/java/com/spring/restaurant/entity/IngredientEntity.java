@@ -13,6 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.List;
 
+/**
+ * Entity class of Ingredient
+ */
+
 @Entity
 @Getter
 @Setter

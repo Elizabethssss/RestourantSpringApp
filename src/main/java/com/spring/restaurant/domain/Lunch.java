@@ -7,6 +7,10 @@ import lombok.Setter;
 import java.time.LocalTime;
 import java.util.List;
 
+/**
+ * Domain class of Lunch
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,6 +30,12 @@ public class Lunch {
         return lunchType.getTimeTo();
     }
 
+    /**
+     * Use to get lunch price from all lunch dishes
+     *
+     * @return int value of price
+     */
+
     public int getPrice() {
         int price = 0;
         for (Dish dish : dishes) {
@@ -33,6 +43,12 @@ public class Lunch {
         }
         return price;
     }
+
+    /**
+     * Use to get lunch weight from all lunch dishes
+     *
+     * @return String value of weight
+     */
 
     public String getWeight() {
         StringBuilder weight = new StringBuilder();

@@ -8,6 +8,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
+/**
+ * Domain class of User
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor

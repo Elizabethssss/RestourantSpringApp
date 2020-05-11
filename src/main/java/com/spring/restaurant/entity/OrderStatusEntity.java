@@ -1,5 +1,9 @@
 package com.spring.restaurant.entity;
 
+/**
+ * Enum of Order Status Entities
+ */
+
 public enum OrderStatusEntity {
     FORMED("Making an order"),
     SENT("Waiting for confirmation"),

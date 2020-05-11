@@ -6,6 +6,11 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * Domain class of Dish
+ */
+
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,6 +25,12 @@ public class Dish {
     private List<Order> orders;
     private List<Lunch> lunches;
     private List<Ingredient> ingredients;
+
+    /**
+     * Use to get integer value of price
+     *
+     * @return int value of price
+     */
 
     public int getPriceInt() {
         return (int) price;

@@ -2,6 +2,10 @@ package com.spring.restaurant.entity;
 
 import java.time.LocalTime;
 
+/**
+ * Enum of Lunch Type Entities
+ */
+
 public enum LunchTypeEntity {
     BREAKFAST(LocalTime.of(7,0), LocalTime.of(10, 0)),
     LUNCH(LocalTime.of(13,0), LocalTime.of(15, 0)),

@@ -10,6 +10,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
+/**
+ * Additional class of Credit Card
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,6 +32,12 @@ public class CreditCard {
 
     @Pattern(regexp = "[0-9]{3}", message = "Wrong input!")
     private String cvv;
+
+    /**
+     * Use to check if the entered date is valid
+     *
+     * @return boolean value of date validation
+     */
 
     public boolean isDateValid() {
         final Integer year = LocalDate.now().getYear() - 2000;
