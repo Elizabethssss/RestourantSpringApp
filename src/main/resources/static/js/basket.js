@@ -28,7 +28,7 @@ basketItems.forEach(item => {
                 success: res => {
                     console.log('received from server:', res);
                     try {
-                        res = JSON.parse(res);
+                        // res = JSON.parse(res);
                         updateBasketItem(action, basketTarget, res)
                     } catch (err) {
                         console.error(err);
@@ -52,8 +52,10 @@ const updateBasketItem = (action, target, res) => {
                 clearTimeout(timeout);
                 timeout = null;
             }, 500);
-            document.querySelector('.total-price').classList.add('hide');
             // document.querySelector('#no-dishes').classList.remove('hide');
+        }
+        if (totalDishes === 0) {
+            document.querySelector('.total-price').classList.add('hide');
         }
     } else {
         target.querySelectorAll('.number-of-item').forEach(item => {
