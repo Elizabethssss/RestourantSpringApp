@@ -1,71 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/authorization.css" />
-    <title>Authorization</title>
+    <title th:text="#{authorization}"></title>
 </head>
 <body>
+<div class="locale">
+    <a th:href="'?lang=en'">EN</a> / <a th:href="'?lang=ru'">RU</a>
+</div>
 <div th:class="'container ' + ${rightSide ? 'right-panel-active' : ''}" id="container">
     <div class="form-container sign-up-container">
         <form method="post" th:action="signUp" th:object="${user}">
-            <h1>Create Account</h1>
+            <h1 th:text="#{create.account}"></h1>
             <input name="username" type="text" th:class="${#fields.hasErrors('username') ? 'error' : ''}"
-                   placeholder="Username" th:field="*{username}"/>
+                   th:placeholder="#{username}" th:field="*{username}"/>
             <p class="errorMsg" th:if="${#fields.hasErrors('username')}"
                th:errors="*{username}">Username Error</p>
             <input name="email" type="email" th:class="${#fields.hasErrors('email') ? 'error' : ''}"
-                   placeholder="Email" th:field="*{email}"/>
+                  th:placeholder="#{email}" th:field="*{email}"/>
             <p class="errorMsg" th:if="${#fields.hasErrors('email')}"
                th:errors="*{email}">Email Error</p>
-            <input name="password" type="password" placeholder="Password"
+            <input name="password" type="password" th:placeholder="#{password}"
                    th:class="${#fields.hasErrors('password') || #fields.hasErrors('rePassword') ? 'error' : ''}"/>
-            <input name="rePassword" type="password" placeholder="Repeat Password" id="pass2"
+            <input name="rePassword" type="password" th:placeholder="#{re.password}" id="pass2"
                    th:class="${#fields.hasErrors('password') || #fields.hasErrors('rePassword') ? 'error' : ''}"/>
 
             <p class="errorMsg" th:if="${#fields.hasErrors('rePassword')}"
                th:errors="*{rePassword}" >Repeat Password Error</p>
             <p class="errorMsg" th:unless="${#fields.hasErrors('password')}"
                th:errors="*{password}" >Password Error</p>
-            <button type="submit" class="btn">Sign Up</button>
+            <button type="submit" class="btn" th:text="#{sign.up}"></button>
         </form>
     </div>
     <div class="form-container sign-in-container">
 
         <form method="post" th:action="@{/login}" th:object="${user}">
-            <h1>Login</h1>
+            <h1 th:text="#{login}"></h1>
             <input name="email" type="email" th:class="${loginError != null ? 'error' : ''}"
-                   placeholder="Email"
+                   th:placeholder="#{email}"
                     value="admin@admin.com"/>
 <!--                    value="dassshka@kiev.ua"-->
             <input name="password" type="password" th:class="${loginError != null ? 'error' : ''}"
-                   placeholder="Password"
+                   th:placeholder="#{password}"
                     value="admin"/>
 <!--                    value="dasha"-->
 
             <p th:if="${loginError}" class="errorMsg" th:text="${loginError}"></p>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn" th:text="#{login}"></button>
         </form>
     </div>
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">
-                <h1>Welcome Back!</h1>
-                <p>To keep connected with us please login with your personal info</p>
-                <button class="ghost btn" id="loginSlideBtn">Login</button>
+                <h1 th:text="#{sign.up.h1}"></h1>
+                <p th:text="#{sign.up.p}"></p>
+                <button class="ghost btn" id="loginSlideBtn" th:text="#{login}"></button>
             </div>
             <div class="overlay-panel overlay-right">
-                <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
-                <button class="ghost btn" id="signUpSlideBtn">Sign Up</button>
+                <h1 th:text="#{login.h1}"></h1>
+                <p th:text="#{login.p}"></p>
+                <button class="ghost btn" id="signUpSlideBtn" th:text="#{sign.up}"></button>
             </div>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>Created with <img src="img/heart.png" alt="Heart" /> by Elizabeth.</p>
+    <p th:text="#{footer.1}"></p><img src="img/heart.png" alt="Heart" /><p th:text="#{footer.2}"></p>
 </footer>
 
 <script src="js/authorization.js"></script>

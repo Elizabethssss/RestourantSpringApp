@@ -28,7 +28,7 @@ basketItems.forEach(item => {
                 success: res => {
                     console.log('received from server:', res);
                     try {
-                        // res = JSON.parse(res);
+                        res = JSON.parse(res);
                         updateBasketItem(action, basketTarget, res)
                     } catch (err) {
                         console.error(err);

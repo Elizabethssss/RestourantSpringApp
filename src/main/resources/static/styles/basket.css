@@ -104,6 +104,11 @@ body {
     margin-left: 20px;
     vertical-align: middle;
 }
+
+.price p {
+    display: inline-block;
+}
+
 .price span {
     font-weight: bold;
     color: #f6731c;
@@ -130,7 +135,7 @@ body {
 .total-price {
     margin: 0 auto;
 }
-.total span {
+.total-price span {
     color: #f6731c;
 }
 

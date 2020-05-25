@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.theme.default.min.css">
 
-    <title>Lunch</title>
+    <title th:text="#{lunch}"></title>
 </head>
 <body>
 <header th:with="navItem='menu'" th:insert="commons/commons :: header"></header>
@@ -21,7 +21,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="menu?type=BREAKFAST&page=1">Menu</a>
+                <a href="menu?type=BREAKFAST&page=1" th:text="#{menu}"></a>
             </li>
             <li class="breadcrumb-item active" aria-current="page" th:text="${lunch.name}"></li>
         </ol>
@@ -39,19 +39,18 @@
                     <div class="col-md-6">
                         <h1 class="text-white" th:text="${lunch.name}"></h1>
                         <p class="para-1" th:text="${lunch.description}"></p>
-                        <p class="weight" th:text="'Weight: ' + ${lunch.weight} + ' g'"></p>
-                        <p class="price" th:text="'Price: ' + ${lunch.price} + ' UAH'"></p>
-                        <button type="submit" class="btn-buy btn px-4 py-1 btn-outline-warning" th:disabled="${disabled}">
-                            Buy
-                        </button>
-                        <p class="para-1" th:text="'You can buy this lunch only from ' + ${lunch.timeFrom} + ' to ' + ${lunch.timeTo}"></p>
+                        <p class="weight" th:text="#{weight} + ': ' + ${lunch.weight} + ' ' + #{weight.g}"></p>
+                        <p class="price" th:text="#{price} + ': ' + ${lunch.price} + ' ' + #{uah}"></p>
+                        <button type="submit" class="btn-buy btn px-4 py-1 btn-outline-warning" th:disabled="${disabled}"
+                                th:text="#{buy}"></button>
+                        <p class="para-1" th:text="#{cant.buy.lunch} + ' ' + ${lunch.timeFrom} + ' ' + #{to} + ' ' + ${lunch.timeTo}"></p>
                     </div>
                 </div>
             </div>
         </div>
     </form>
     <div class="container carous">
-        <h1><span>Check dishes:</span></h1>
+        <h1><span th:text="#{check.dishes} + ':'"></span></h1>
         <div class="owl-carousel owl-theme">
             <div th:each="dish : ${lunch.getDishes()}">
             <a th:href="'dish?dishId=' + ${dish.id}">

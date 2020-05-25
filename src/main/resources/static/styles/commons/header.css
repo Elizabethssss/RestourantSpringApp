@@ -34,7 +34,11 @@
     background: #fff0d8;
 }
 
-#totalDishes {
+#totalDishes p {
+    display: contents;
+}
+
+#totalDishes span {
     font-weight: bold;
 }
 

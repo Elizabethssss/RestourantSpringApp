@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/basket.css" />
     <link rel="stylesheet" href="styles/commons/header.css" />
     <link rel="stylesheet" href="styles/commons/footer.css" />
-    <title>Basket</title>
+    <title th:text="#{basket}"></title>
 </head>
 <body>
 <header th:with="navItem=''" th:insert="commons/commons :: header"></header>
@@ -17,8 +17,8 @@
 <main>
     <div class="section-1 bg">
         <div class="container">
-            <h1 class="basket-title"><span>Your dishes:</span></h1>
-            <div class="no-dishes" th:if="${dishIntegerMap.isEmpty() && lunchIntegerMap.isEmpty()}">You haven't chosen any dishes yet!</div>
+            <h1 class="basket-title"><span th:text="#{your.dishes} + ':'"></span></h1>
+            <div class="no-dishes" th:if="${dishIntegerMap.isEmpty() && lunchIntegerMap.isEmpty()}" th:text="#{no.dishes}"></div>
 
             <div class="row">
                 <div th:each="dishEntry : ${dishIntegerMap}" class="basket-item fade-out col-10" data-type="dish" th:attr="data-id=${dishEntry.key.id}">
@@ -36,9 +36,12 @@
                             <button class="up_count btn p-m-btn" title="Up" data-action="plus">+</button>
                         </div>
                         <p class="mt-3 price">
-                            Price: <span class="number-of-item" th:text="${dishEntry.value}"></span>
+                            <span th:text="#{price} + ':'" th:remove="tag"></span>
+                            <span class="number-of-item" th:text="${dishEntry.value}"></span>
                             <span class="price-ex">x</span> <span th:text="${dishEntry.key.priceInt}"></span>
-                            UAH = <span class="price-of-items" th:text="${dishEntry.value * dishEntry.key.priceInt}"></span> UAH
+                            <span th:text="#{uah} + ' = '" th:remove="tag"></span>
+                            <span class="price-of-items" th:text="${dishEntry.value * dishEntry.key.priceInt}"></span>
+                            <span th:text="#{uah}" th:remove="tag"></span>
                         </p>
                     </div>
                 </div>
@@ -57,18 +60,24 @@
                             <button class="up_count btn p-m-btn" title="Up" data-action="plus">+</button>
                         </div>
                         <p class="mt-3 price">
-                            Price: <span class="number-of-item" th:text="${lunchEntry.value}"></span>
+                            <span th:text="#{price} + ':'" th:remove="tag"></span>
+                            <span class="number-of-item" th:text="${lunchEntry.value}"></span>
                             <span class="price-ex">x</span> <span th:text="${lunchEntry.key.price}"></span>
-                            UAH = <span class="price-of-items" th:text="${lunchEntry.value * lunchEntry.key.price}"></span> UAH
+                            <span th:text="#{uah} + ' = '" th:remove="tag"></span>
+                            <span class="price-of-items" th:text="${lunchEntry.value * lunchEntry.key.price}"></span>
+                            <span th:text="#{uah}" th:remove="tag"></span>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="row" th:if="${!dishIntegerMap.isEmpty() || !lunchIntegerMap.isEmpty()}">
                 <div class="total-price col-10 mt-4 text-right">
-                    <h2 class="total">Total: <span id="totalPrice" th:text="${totalPrice}"></span>
-                        UAH</h2>
-                    <a href="placeOrder" class="btn btn-dark mb-4">Place an order</a>
+                    <h2 class="total">
+                        <span th:text="#{total} + ':'" th:remove="tag"></span>
+                        <span id="totalPrice" th:text="${totalPrice}"></span>
+                        <span th:text="#{uah}" th:remove="tag"></span>
+                    </h2>
+                    <a href="placeOrder" class="btn btn-dark mb-4" th:text="#{place.order}"></a>
                 </div>
             </div>
         </div>

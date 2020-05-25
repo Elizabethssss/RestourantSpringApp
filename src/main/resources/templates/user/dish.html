@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="libs/owlcarousel/dist/assets/owl.theme.default.min.css">
 
-    <title>Dish</title>
+    <title th:text="#{dish}">Dish</title>
 </head>
 <body>
 <header th:with="navItem='menu'" th:insert="commons/commons :: header"></header>
@@ -21,7 +21,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="menu?type=MAIN_DISH&page=1">Menu</a>
+                <a href="menu?type=MAIN_DISH&page=1" th:text="#{menu}"></a>
             </li>
             <li class="breadcrumb-item active" aria-current="page" th:text="${dish.name}"></li>
         </ol>
@@ -39,18 +39,16 @@
                     <div class="dish-description col-md-6">
                         <h1 class="text-white" th:text="${dish.name}"></h1>
                         <p class="para-1" th:text="${dish.about}"></p>
-                        <p class="weight" th:text="'Weight: ' + ${dish.weight} + ' g'"></p>
-                        <p class="price" th:text="'Price: ' + ${dish.priceInt} + ' UAH'"></p>
-                        <button type="submit" class="btn px-4 py-1 btn-outline-warning">
-                            Buy
-                        </button>
+                        <p class="weight" th:text="#{weight} + ': ' + ${dish.weight} + ' ' + #{weight.g}"></p>
+                        <p class="price" th:text="#{price} + ': ' + ${dish.priceInt} + ' ' + #{uah}"></p>
+                        <button type="submit" class="btn px-4 py-1 btn-outline-warning" th:text="#{buy}"></button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
     <div class="container carous">
-        <h1><span>Ingredients:</span></h1>
+        <h1><span th:text="#{ingredients} + ':'"></span></h1>
         <div class="owl-carousel owl-theme">
             <div class="item ingredient-item" th:each="ingredient : ${dish.ingredients}">
                 <div>
