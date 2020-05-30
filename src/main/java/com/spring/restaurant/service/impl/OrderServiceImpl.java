@@ -25,8 +25,8 @@ import static com.spring.restaurant.service.util.ServiceUtil.getNumberOfPages;
 public class OrderServiceImpl implements OrderService {
     private static final int ITEMS_PER_PAGE = 7;
     private final OrderRepository orderRepository;
-    private final Mapper<Order, OrderEntity> orderMapper;
     private final Mapper<User, UserEntity> userMapper;
+    private final Mapper<Order, OrderEntity> orderMapper;
 
     @Override
     public void saveOrder(Order order) {

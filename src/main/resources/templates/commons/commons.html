@@ -21,12 +21,11 @@
                 <li class="nav-item ">
                     <a href="myOrders?page=1" th:class="'nav-link ' + ${navItem.equals('myOrders') ? 'active' : ''}" th:text="#{my.orders}"></a>
                 </li>
-                <li th:if="${session.get('user').role.name() == 'ADMIN'}" class="nav-item ">
-                    <a href="adminPage?page=1" th:class="'nav-link ' + ${navItem.equals('adminPage') ? 'active' : ''}" th:text="#{admin.page}"></a>
-                </li>
+<!--                <li th:if="${session.get('user') != null && session.get('user').role.name() == 'ADMIN'}" class="nav-item ">-->
+<!--                    <a href="adminPage?page=1" th:class="'nav-link ' + ${navItem.equals('adminPage') ? 'active' : ''}" th:text="#{admin.page}"></a>-->
+<!--                </li>-->
 
             </ul>
-<!--            todo not index page -->
             <div class="dropdown mr-3">
                 <button class="btn btn-outline-warning dropdown-toggle btn-drop" type="button"
                         id="dropdownMenuButton" data-toggle="dropdown">EN/RU</button>

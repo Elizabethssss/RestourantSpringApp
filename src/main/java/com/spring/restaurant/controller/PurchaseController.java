@@ -140,7 +140,7 @@ public class PurchaseController {
     }
 
     @PostMapping("/creditCard")
-    public String creditCardPage(@RequestParam String orderId, @ModelAttribute @Valid CreditCard creditCard, Errors errors, Model model) {
+    public String creditCardPay(@RequestParam String orderId, @ModelAttribute @Valid CreditCard creditCard, Errors errors, Model model) {
         final Optional<Order> order = orderService.findById(Long.valueOf(orderId));
         if(order.isPresent()) {
             if (!creditCard.isDateValid()) {
