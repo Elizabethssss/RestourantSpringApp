@@ -11,6 +11,8 @@ import java.util.Collection;
 
 import static com.spring.restaurant.controller.util.ControllerUtil.REDIRECT;
 import static com.spring.restaurant.controller.util.ControllerUtil.parsePageNumber;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -39,5 +41,6 @@ public class ControllerUtilTest {
     @Test
     public void parsePageNumberTest() {
         assertEquals(expected, parsePageNumber(parameter, totalPages, url));
+        assertThat(expected, equalTo(parsePageNumber(parameter, totalPages, url)));
     }
 }
